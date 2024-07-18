@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<fstream>
 using namespace std;
 
 class temp{
@@ -8,19 +9,19 @@ class temp{
    void addBook();
    void showAll();
    void extractBook();
-};
+}obj;
 int main(){
 
-    cout<<"-------------------------";
-    cout<<"1-Show All Books";
-    cout<<"2-Extract Book";
-    cout<<"3-Add books(Admin)";
-    cout<<"3-Exit";
-    cout<<"-------------------------";
-    cout<<"Enter Your Choice ::";
+    cout<<"-------------------------\n";
+    cout<<"1-Show All Books\n";
+    cout<<"2-Extract Book\n";
+    cout<<"3-Add books(Admin)\n";
+    cout<<"3-Exit\n";
+    cout<<"-------------------------\n";
+    cout<<"Enter Your Choice ::\n";
     char choice;
     cin>>choice;
-    temp obj;
+   
     switch(choice)
     {
 
@@ -31,8 +32,6 @@ int main(){
         break;
 
         
-        break;
-
         case '2':
         cin.ignore();
         obj.extractBook();
@@ -46,7 +45,7 @@ int main(){
 
         case '4':
        return 0;
-        
+        break;
 
         default:cout<<"Invalid Choice!";
     }
@@ -59,27 +58,30 @@ int main(){
  void temp :: addBook(){
     cout<<"\nEnter Book ID :: ";
     getline(cin,id);
-    cout<<"Enter Book Name";
+    cout<<"Enter Book Name :: ";
     getline(cin,name);
     cout<<"Enter Book's Author name ::";
     getline(cin,author);
 
-    file.open("bookData.txt,ios:: out | ios :: app");
+    file.open("booksData.txt",ios:: out | ios :: app);
     file<<id<<"*"<<name<<"*"<<author<<endl;
     file.close();
  } 
 
  void temp :: showAll(){
-    file.open("bookData.txt",ios :: in);
+    file.open("booksData.txt",ios :: in);
     getline(file,id,'*');
     getline(file,name,'*');
     getline(file,author,'\n');
         cout<<"\n\n";
-        cout<<"\t\t Book Id \t\t\t Book Name \t\t\t Author's Name"<<endl;
+        cout<<"\t\t Book ID \t\t\t Book Name \t\t\t Author's Name"<<endl;
 
     while(!file.eof())
     {
          cout<<"\t\t"<<id<<" \t\t\t"<<name<<"\t\t\t "<<author<<endl;
+         getline(file,id,'*');
+    getline(file,name,'*');
+    getline(file,author,'\n');
     }
     file.close();
  } 
@@ -90,21 +92,24 @@ int main(){
     cout<<"Enter Book ID ::";
     getline(cin,search);
     
-    file.open("bookData.txt",ios::in);
+    file.open("booksData.txt",ios::in);
     getline(file,id,'*');
     getline(file,name,'*');
     getline(file,author,'\n');
 
      cout<<"\n\n";
-    cout<<"\t\t Book Id \t\t\t Book Name \t\t\t Author's Name"<<endl;
+    cout<<"\t\t Book ID \t\t\t Book Name \t\t\t Author's Name"<<endl;
     
-    while(file.eof())
+    while(!file.eof())
     {
         if(search ==id )
         {
             cout<<"\t\t"<<id<<" \t\t\t"<<name<<"\t\t\t "<<author<<endl;
+            cout<<"Book Extracted Successfully!!!";
         }
+        getline(file,id,'*');
+    getline(file,name,'*');
+    getline(file,author,'\n');
     }
 
  }
-
