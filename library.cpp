@@ -16,7 +16,7 @@ int main(){
     cout<<"1-Show All Books\n";
     cout<<"2-Extract Book\n";
     cout<<"3-Add books(Admin)\n";
-    cout<<"3-Exit\n";
+    cout<<"4-Exit\n";
     cout<<"-------------------------\n";
     cout<<"Enter Your Choice ::\n";
     char choice;
